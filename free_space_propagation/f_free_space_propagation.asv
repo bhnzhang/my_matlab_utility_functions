@@ -33,11 +33,13 @@ function [ E_XZ, FZ, E_fxfz ] = f_free_space_propagation( x, z, e_x0, lambda0, n
 %       desc: propagated field, dimensions x vs z
 %   FZ
 %       type: double, matrix
-%       desc: propagation constants, dimensions fx vs fz
+%       desc: transfer function, dimensions fx 
 %   E_fxfz
 %       type: double, matrix
 %       desc: k space propagated field, dimensions fx vs fz
-
+%       e_xz  - electric field at distance z, dim (z, x)
+%         fz  - transfer function exponent
+%         E_fxfz - E spectrum
 
 % use debug mode?
 if nargin < 7
