@@ -80,7 +80,7 @@ u00 =   1j .* sqrt(k*b/pi) .* ( 1./(zprime + 1j.*b) ).*...
     exp( -1j.*k.*( xprime.^2 )./( 2*(zprime + 1j.*b) ) );     
 
 % normalize the mode to intensity, makes things nicer
-u00   = u00/sqrt( dx * sum( abs( u00 ).^2 ) );
+u00   = u00/sqrt( sum( abs( u00 ).^2 ) );
 
 
 % calculate fields
