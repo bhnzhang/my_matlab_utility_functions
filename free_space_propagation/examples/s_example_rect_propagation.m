@@ -20,14 +20,6 @@ n0      = 1;                    % medium index of refraction
 lambda  = lambda0/n0;           % material wavelength
 k       = 2*pi/lambda;          % material wavenumber
 
-% % Lens parameters, uhhh what are these for?
-% L           = 100*lambda;               % length of slit
-% z_l         = 1*((L/2)^2)/lambda;       % distance to lens (m)
-% f           = z_l/2;
-% theta_parax = atan( lambda/L ); % paraxial angle
-% D           = [20] .* 2*(lambda*z_l)/L;
-% NA          = n0*D/(2*f);
-
 % Defining the space for proper DFT
 L   = 2*lambda;               % length of slit
 W   = 100*L;
