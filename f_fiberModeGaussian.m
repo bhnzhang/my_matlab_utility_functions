@@ -54,10 +54,11 @@ function [Ez, Hx] = f_fiberModeGaussian( w0, lambda0, xvec, unit_scale, theta, d
 
 
 % Constants, in units of meters
+lambda0 = lambda0 * unit_scale;                 % m
 c       = 3e8;                                  % m/s
 mu0     = 4*pi * 1e-7;                          % H/m
 omega0  = 2*pi*c/lambda0;                       % rad/s
-lambda  = lambda0 * unit_scale / nclad;         % wavelength in cladding, units m
+lambda  = lambda0 / nclad;                      % wavelength in cladding, units m
 k       = 2*pi/lambda;                          % 1/m
 w0      = w0 * unit_scale;                      % [meters] radius
 d0      = d0 * unit_scale;                      % [meters] offset
@@ -79,8 +80,8 @@ b = k*w0^2/2;
 u00 =   1j .* sqrt(k*b/pi) .* ( 1./(zprime + 1j.*b) ).*...
     exp( -1j.*k.*( xprime.^2 )./( 2*(zprime + 1j.*b) ) );     
 
-% normalize the mode to intensity, makes things nicer
-u00   = u00/sqrt( sum( abs( u00 ).^2 ) );
+% % normalize the mode to intensity, makes things nicer
+% u00   = u00/sqrt( sum( abs( u00 ).^2 ) );
 
 
 % calculate fields

@@ -10,16 +10,19 @@ function [ E_XZ, FZ, E_fxfz ] = f_free_space_propagation( x, z, e_x0, lambda0, n
 % Inputs:
 %   x
 %       type: double, array
-%       desc: transverse coordinates, units meters
+%       desc: transverse coordinates, units arbitrary as long as
+%               consistent?
 %   z
 %       type: double, array
-%       desc: propagation coordinates, units meters
+%       desc: propagation coordinates, units arbitrary as long as
+%               consistent?
 %   e_x0
 %       type: double, array
 %       desc: transverse electric field to propagate
 %   lambda0
 %       type: double, scalar
-%       desc: free space wavelength, units meters
+%       desc: free space wavelength, units arbitrary as long as
+%               consistent?
 %   n
 %       type: double, scalar
 %       desc: index of refraction of homogenous material
