@@ -1,4 +1,4 @@
-function [Ez, Hx] = f_fiberModeGaussian( w0, lambda0, xvec, unit_scale, theta, d0, nclad )
+function [Ez, Hx] = f_fiberModeGaussian( w0, lambda0, xvec, theta, d0, nclad )
 % somewhat adapted from Cale's code
 %
 % Generate Gaussian-beam mode profile at a plane through y = d0 at angle of
@@ -32,6 +32,7 @@ function [Ez, Hx] = f_fiberModeGaussian( w0, lambda0, xvec, unit_scale, theta, d
 %   unit_scale
 %       type: double, scalar
 %       desc: scaling factor, such that 'units' * unit_scale = meters
+%               p sure this isn't needed
 %           
 %   theta 
 %       type: double, scalar
@@ -54,20 +55,25 @@ function [Ez, Hx] = f_fiberModeGaussian( w0, lambda0, xvec, unit_scale, theta, d
 
 
 % Constants, in units of meters
-lambda0 = lambda0 * unit_scale;                 % m
+% lambda0 = lambda0 * unit_scale;                 % m
+% c       = 3e8;                                  % m/s
+% mu0     = 4*pi * 1e-7;                          % H/m
+% omega0  = 2*pi*c/lambda0;                       % rad/s
+% lambda  = lambda0 / nclad;                      % wavelength in cladding, units m
+% k       = 2*pi/lambda;                          % 1/m
+% w0      = w0 * unit_scale;                      % [meters] radius
+% d0      = d0 * unit_scale;                      % [meters] offset
 c       = 3e8;                                  % m/s
 mu0     = 4*pi * 1e-7;                          % H/m
 omega0  = 2*pi*c/lambda0;                       % rad/s
-lambda  = lambda0 / nclad;                      % wavelength in cladding, units m
-k       = 2*pi/lambda;                          % 1/m
-w0      = w0 * unit_scale;                      % [meters] radius
-d0      = d0 * unit_scale;                      % [meters] offset
+lambda  = lambda0 / nclad;                      % wavelength in cladding
+k       = 2*pi/lambda;                          
 
 % Convert to radians
 theta = (pi/180)*theta;
 
 % Scale coordinates
-xvec = xvec * unit_scale;                                              % units m
+% xvec = xvec * unit_scale;                                              % units m
 
 % coordinates in fiber frame
 xprime = xvec.*cos(theta) - d0*sin(theta);
