@@ -16,7 +16,7 @@ end
 
 % Size the figure
 fig = gcf;
-set(fig,'Position',[fig_pos(1), fig_pos(2), 100 + fig_size(1), 200 + fig_size(2)]);
+set(fig,'Position',[fig_pos(1), fig_pos(2), fig_size(1), fig_size(2)]);
 
 % Set the fonts
 set(gca,'FontSize',16);
