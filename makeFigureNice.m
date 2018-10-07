@@ -41,6 +41,12 @@ end
 % turn the grid on
 grid on;
 
+% make tick marks thicker
+ax = gca;
+ax.TickLength       = 3*ax.TickLength;
+ax.LineWidth        = 1.5;
+ax.GridLineStyle    = '--';
+
 % % Copy to clipboard
 % print -dbitmap -r200;
 
