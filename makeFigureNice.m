@@ -8,7 +8,7 @@ function [] = makeFigureNice( fig_size, fig_pos )
 %                       Choose position of figure [x pos, y pos]
 
 if nargin == 0
-   fig_size = [600, 400];
+   fig_size = [800, 600];
 end
 if nargin < 2
    fig_pos = [100, 100];
