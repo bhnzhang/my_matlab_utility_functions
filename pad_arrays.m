@@ -1,6 +1,8 @@
 function [ array1, array2 ] = pad_arrays( array1, array2 )
 % Zero pads two arrays of different length so they are the same length 
 % so I can do FFTs properly
+%
+% expects inputs to be [ 1 x n ]
 
 % get longer length of the two
 longer_len = max( [ length(array1), length(array2) ] );
