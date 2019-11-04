@@ -1,4 +1,4 @@
-function [] = makeFigureNice( OPTS )
+function [] = makeFigureNice( fig_size, fig_pos, OPTS )
 % simple function to make figure look nicer.
 % 
 % Inputs:
@@ -13,11 +13,9 @@ function [] = makeFigureNice( OPTS )
 %             'fig_pos':
 %                       Choose position of figure [x pos, y pos]
 
-% DEFAULTS
 if nargin == 0
-   OPTS.fig_size        = [800, 600];
-   OPTS.fig_pos         = [100, 100];
-   OPTS.grid_line_style = '--';  % default to dashed lines
+   fig_size = [800, 600];
+   
 end
 if nargin < 2
    
@@ -28,7 +26,7 @@ end
 
 % Size the figure
 fig = gcf;
-set(fig,'Position',[OPTS.fig_pos(1), OPTS.fig_pos(2), OPTS.fig_size(1), OPTS.fig_size(2)]);
+set(fig,'Position',[fig_pos(1), fig_pos(2), fig_size(1), fig_size(2)]);
 
 % Set the fonts
 set(gca,'FontSize',16);
