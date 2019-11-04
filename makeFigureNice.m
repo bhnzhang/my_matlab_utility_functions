@@ -12,18 +12,53 @@ function [] = makeFigureNice( OPTS )
 %                       Choose dimensions of figure [x size, y size]
 %             'fig_pos':
 %                       Choose position of figure [x pos, y pos]
+%             'font_size':
+%                   font size to use for all fonts
+%             'line_width'
+%             'axis_line_width'
+%                   sets line width for ticks and grid
 
 % DEFAULTS
+default_fig_size        = [800, 600];
+default_fig_pos         = [100, 100];
+default_grid_line_style = '--';
+default_font_size       = 16;
+default_line_width      = 2.0;
+default_axis_line_width = 1.5;
+
 if nargin == 0
-   OPTS.fig_size        = [800, 600];
-   OPTS.fig_pos         = [100, 100];
-   OPTS.grid_line_style = '--';  % default to dashed lines
-end
-if nargin < 2
+   OPTS.fig_size        = default_fig_size;
+   OPTS.fig_pos         = default_fig_pos;
+   OPTS.grid_line_style = default_grid_line_style;  % default to dashed lines
+   OPTS.font_size       = default_font_size;  
+   OPTS.line_width      = default_line_width; 
+   OPTS.axis_line_width = default_axis_line_width;
+else
+    
+   if ~isfield( OPTS, 'fig_size' )
+       OPTS.fig_size = default_fig_size;
+   end
    
-end
-if nargin < 3
-   OPTS.grid_line_style = '--';  % default to dashed lines
+   if ~isfield( OPTS, 'fig_pos' )
+       OPTS.fig_pos = default_fig_pos;
+   end
+   
+   if ~isfield( OPTS, 'grid_line_style' )
+       OPTS.grid_line_style = default_grid_line_style;
+   end
+   
+   if ~isfield( OPTS, 'font_size' )
+       OPTS.font_size = default_font_size;
+   end
+   
+   if ~isfield( OPTS, 'line_width' )
+       OPTS.line_width = default_line_width;
+   end
+   
+   if ~isfield( OPTS, 'axis_line_width' )
+       OPTS.axis_line_width = default_axis_line_width;
+   end
+    
 end
 
 % Size the figure
@@ -31,20 +66,20 @@ fig = gcf;
 set(fig,'Position',[OPTS.fig_pos(1), OPTS.fig_pos(2), OPTS.fig_size(1), OPTS.fig_size(2)]);
 
 % Set the fonts
-set(gca,'FontSize',16);
-set(get(gca,'YLabel'),'FontSize',16);
-set(get(gca,'XLabel'),'FontSize',16);
-set(get(gca,'Title'),'FontSize',16);
+set(gca,'FontSize',OPTS.font_size);
+set(get(gca,'YLabel'),'FontSize',OPTS.font_size);
+set(get(gca,'XLabel'),'FontSize',OPTS.font_size);
+set(get(gca,'Title'),'FontSize',OPTS.font_size);
 
 % Make the lines thicker
 hPlot = get(get(fig,'Children'),'Children');
 
 try     % won't execute if there are no lines to thicken
     if iscell(hPlot)
-        set(hPlot{1},'LineWidth',2.0);
-        set(hPlot{2},'LineWidth',2.0);
+        set(hPlot{1},'LineWidth',OPTS.line_width);
+        set(hPlot{2},'LineWidth',OPTS.line_width);
     else
-        set(hPlot,'LineWidth',2.0);
+        set(hPlot,'LineWidth',OPTS.line_width);
     end
 catch
     % do nothing
@@ -56,7 +91,7 @@ grid on;
 % make tick marks thicker
 ax = gca;
 ax.TickLength       = 3*ax.TickLength;
-ax.LineWidth        = 1.5;
+ax.LineWidth        = OPTS.axis_line_width;
 ax.GridLineStyle    = OPTS.grid_line_style;
 
 % % Copy to clipboard
