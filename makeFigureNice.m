@@ -90,7 +90,7 @@ grid on;
 
 % make tick marks thicker
 ax = gca;
-ax.TickLength       = 3*ax.TickLength;
+ax.TickLength       = [0.03, 0.075];
 ax.LineWidth        = OPTS.axis_line_width;
 ax.GridLineStyle    = OPTS.grid_line_style;
 
