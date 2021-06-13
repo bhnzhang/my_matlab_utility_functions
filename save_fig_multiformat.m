@@ -21,11 +21,14 @@ if save_on == true
     %save .png
     saveas(h_fig, name, 'png');
 
-    %save .eps color
-    saveas(h_fig, name, 'epsc');
+%     %save .eps color
+%     saveas(h_fig, name, 'epsc');
+%     
+%     % save emf
+%     saveas(h_fig, name, 'emf');
     
-    % save emf
-    saveas(h_fig, name, 'emf');
+    % save pdf
+    saveas(h_fig, name, 'pdf');
 end
 
 end
